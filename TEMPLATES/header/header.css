@@ -1,0 +1,22 @@
+.image img {
+  width: 6%;
+}
+
+.second {
+  position: absolute;
+  top: 20px;
+  left: 152px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: math;
+}
+
+.mainndiv {
+  margin-left: 50px;
+}
+.right {
+  text-align: right;
+  padding-bottom: 10px;
+  padding-right: 25px;
+  margin-top: -55px;
+}

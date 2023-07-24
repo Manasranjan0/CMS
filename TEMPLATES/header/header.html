@@ -1,0 +1,83 @@
+<!-- left -->
+{%load static %}
+<style>
+    .image img {
+        width: 6%;
+
+    }
+
+    .second {
+        position: absolute;
+        top: 20px;
+        left: 152px;
+        font-size: 20px;
+        font-weight: 600;
+        font-family: math;
+    }
+
+    .mainndiv {
+        margin-left: 50px;
+    }
+    .right{
+        text-align: right;
+        padding-bottom: 10px;
+        padding-right: 25px;
+        margin-top: -55px;
+    }
+    /* .row{
+        padding-left: 90%;
+        padding-bottom: 10px;
+        padding-right: 25px;
+        margin-top: 40px;
+    } */
+</style>
+<header>
+    <div class="mainndiv">
+        <div class="image">
+            <img src="{%static 'logo.webp' %}" alt="">
+        </div>
+        <div>
+            <p class="second">CMS(COLLEGE <br> MANAGAMENT SYSTEM)</p>
+        </div>
+
+    </div>
+
+    <!-- right -->
+    <div class="dropdown  right">
+        <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" aria-expanded="false">
+          Login
+        </button>
+        <div class="dropdown-menu">
+            <a href="{% url 'login'%}">
+          <button class="dropdown-item" type="button">Administration Login</button></a>
+          <a href="{% url 'login'%}"><button class="dropdown-item" type="button">Student Login</button></a>
+          <a href="{% url 'login'%}"><button class="dropdown-item" type="button">Teacher's Login</button></a>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle mt-2" type="button" data-toggle="dropdown" aria-expanded="false">
+              Sign Up
+            </button>
+            <div class="dropdown-menu">
+              <a href="{% url 'studentSignup' %}"><button class="dropdown-item" type="button">Administration</button></a>
+              <a href="{% url 'studentSignup' %}"><button class="dropdown-item" type="button">Student</button></a>
+              <a href="{% url 'studentSignup' %}"><button class="dropdown-item" type="button">Teacher</button></a>
+            </div>
+          </div>
+           
+                    <!-- btn by html -->
+
+        <!-- <form action="#">
+            <button type="button">
+            <label for="#">Login</label></button>
+            <select name="#" id="#">
+              <option value="#">Administration</option>
+              <option value="#">Students</option>
+              <option value="#">Teacher's</option>
+              
+            </select>
+        
+          </form> -->
+    </div>
+       
+</header>

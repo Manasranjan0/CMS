@@ -4,3 +4,7 @@ from django.shortcuts import HttpResponse
 
 def homepage(request):
     return render(request,'index.html')
+def addlogin(request):
+    return render(request,'loginpage/loginPage.html')
+def StudentSignUp(request):
+    return render(request,'signuppage/studentsignuppage.html')
