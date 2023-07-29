@@ -1,0 +1,51 @@
+<style>
+    .carousel-container {
+        width: 100%;
+        /* Set the desired width of the carousel */
+        overflow:auto;
+        height: 380px;
+        /* Hide overflow to create the carousel effect */
+    }
+
+    .carousel-slide {
+        display: flex;
+        /* Make the slide container a flex container */
+        transition: transform 0.3s ease-in-out;
+        /* Enable smooth slide transition */
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        /* Make images responsive to the container width */
+    }
+</style>
+<div class="carousel-container">
+    <div class="carousel-slide">
+        <img src="../static/carousel img/c1.webp" alt="Image 1">
+        <img src="../static/carousel img/c2.webp" alt="Image 2">
+        <img src="../static/carousel img/c3.webp" alt="Image 3">
+        <img src="../static/carousel img/c4.webp" alt="Image 4">
+        <img src="../static/carousel img/c5.webp" alt="Image 5">
+    </div>
+</div>
+<script>
+    // JavaScript to create the carousel effect
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const images = carouselSlide.getElementsByTagName('img');
+
+    let currentIndex = 0;
+    const slideInterval = 3000; // Time interval for changing slides (in milliseconds)
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlidePosition();
+    }
+
+    function updateSlidePosition() {
+        carouselSlide.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Start the carousel
+    setInterval(nextSlide, slideInterval);
+
+</script>
