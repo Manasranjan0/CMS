@@ -1,51 +1,251 @@
-<style>
-    .carousel-container {
-        width: 100%;
-        /* Set the desired width of the carousel */
-        overflow:auto;
-        height: 380px;
-        /* Hide overflow to create the carousel effect */
-    }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    .carousel-slide {
-        display: flex;
-        /* Make the slide container a flex container */
-        transition: transform 0.3s ease-in-out;
-        /* Enable smooth slide transition */
-    }
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Carousel</title>
+    <style>
+      .carousel {
+        margin-left: 15%;
+        margin-right: 15%;
+      }
 
-    .carousel-slide img {
+      ul.slides {
+        display: block;
+        position: relative;
+        height: 600px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        list-style: none;
+      }
+
+      .slides * {
+        user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
+
+      ul.slides input {
+        display: none;
+      }
+
+      .slide-container {
+        display: block;
+      }
+
+      .slide-image {
+        display: block;
+        position: absolute;
         width: 100%;
-        /* Make images responsive to the container width */
-    }
-</style>
-<div class="carousel-container">
-    <div class="carousel-slide">
-        <img src="../static/carousel img/c1.webp" alt="Image 1">
-        <img src="../static/carousel img/c2.webp" alt="Image 2">
-        <img src="../static/carousel img/c3.webp" alt="Image 3">
-        <img src="../static/carousel img/c4.webp" alt="Image 4">
-        <img src="../static/carousel img/c5.webp" alt="Image 5">
+        height: 100%;
+        top: 0;
+        opacity: 0;
+        transition: all 0.7s ease-in-out;
+      }
+
+      .slide-image img {
+        width: auto;
+        min-width: 100%;
+        height: 100%;
+      }
+
+      .carousel-controls {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        font-size: 100px;
+        line-height: 600px;
+        color: #fff;
+      }
+
+      .carousel-controls label {
+        display: none;
+        position: absolute;
+        padding: 0 20px;
+        opacity: 0;
+        transition: opacity 0.2s;
+        cursor: pointer;
+      }
+
+      .slide-image:hover + .carousel-controls label {
+        opacity: 0.5;
+      }
+
+      .carousel-controls label:hover {
+        opacity: 1;
+      }
+
+      .carousel-controls .prev-slide {
+        width: 49%;
+        text-align: left;
+        left: 0;
+      }
+
+      .carousel-controls .next-slide {
+        width: 49%;
+        text-align: right;
+        right: 0;
+      }
+
+      .carousel-dots {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        z-index: 999;
+        text-align: center;
+      }
+
+      .carousel-dots .carousel-dot {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #fff;
+        opacity: 0.5;
+        margin: 10px;
+      }
+
+      input:checked + .slide-container .slide-image {
+        opacity: 1;
+        transform: scale(1);
+        transition: opacity 1s ease-in-out;
+      }
+
+      input:checked + .slide-container .carousel-controls label {
+        display: block;
+      }
+
+      input#img-1:checked ~ .carousel-dots label#img-dot-1,
+      input#img-2:checked ~ .carousel-dots label#img-dot-2,
+      input#img-3:checked ~ .carousel-dots label#img-dot-3,
+      input#img-4:checked ~ .carousel-dots label#img-dot-4,
+      input#img-5:checked ~ .carousel-dots label#img-dot-5,
+      input#img-6:checked ~ .carousel-dots label#img-dot-6 {
+        opacity: 1;
+      }
+
+      input:checked + .slide-container .nav label {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <div class="carousel">
+        <ul class="slides">
+          <input type="radio" name="radio-buttons" id="img-1" checked />
+          <li class="slide-container">
+            <div class="slide-image">
+              <img
+                src="../static/carousel img/c1.webp"
+              />
+            </div>
+            <div class="carousel-controls">
+              <label for="img-5" class="prev-slide">
+                <span>&lsaquo;</span>
+              </label>
+              <label for="img-2" class="next-slide">
+                <span>&rsaquo;</span>
+              </label>
+            </div>
+          </li>
+          <input type="radio" name="radio-buttons" id="img-2" />
+          <li class="slide-container">
+            <div class="slide-image">
+              <img
+                src="../static/carousel img/c2.webp"
+              />
+            </div>
+            <div class="carousel-controls">
+              <label for="img-1" class="prev-slide">
+                <span>&lsaquo;</span>
+              </label>
+              <label for="img-3" class="next-slide">
+                <span>&rsaquo;</span>
+              </label>
+            </div>
+          </li>
+          <input type="radio" name="radio-buttons" id="img-3" />
+          <li class="slide-container">
+            <div class="slide-image">
+              <img
+                src="../static/carousel img/c3.webp"
+              />
+            </div>
+            <div class="carousel-controls">
+              <label for="img-2" class="prev-slide">
+                <span>&lsaquo;</span>
+              </label>
+              <label for="img-4" class="next-slide">
+                <span>&rsaquo;</span>
+              </label>
+            </div>
+          </li>
+          <input type="radio" name="radio-buttons" id="img-4" />
+          <li class="slide-container">
+            <div class="slide-image">
+              <img
+                src="../static/carousel img/c4.webp"
+              />
+            </div>
+            <div class="carousel-controls">
+              <label for="img-3" class="prev-slide">
+                <span>&lsaquo;</span>
+              </label>
+              <label for="img-5" class="next-slide">
+                <span>&rsaquo;</span>
+              </label>
+            </div>
+          </li>
+          <input type="radio" name="radio-buttons" id="img-5"  />
+          <li class="slide-container">
+            <div class="slide-image">
+              <img
+                src="../static/carousel img/c5.webp"
+              />
+            </div>
+            <div class="carousel-controls">
+              <label for="img-4" class="prev-slide">
+                <span>&lsaquo;</span>
+              </label>
+              <label for="img-1" class="next-slide">
+                <span>&rsaquo;</span>
+              </label>
+            </div>
+          </li>
+          <div class="carousel-dots">
+            <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+            <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+            <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+            <label for="img-4" class="carousel-dot" id="img-dot-4"></label>
+            <label for="img-5" class="carousel-dot" id="img-dot-5"></label>
+          </div>
+        </ul>
+      </div>
     </div>
-</div>
-<script>
-    // JavaScript to create the carousel effect
-    const carouselSlide = document.querySelector('.carousel-slide');
-    const images = carouselSlide.getElementsByTagName('img');
-
-    let currentIndex = 0;
-    const slideInterval = 3000; // Time interval for changing slides (in milliseconds)
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateSlidePosition();
-    }
-
-    function updateSlidePosition() {
-        carouselSlide.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    // Start the carousel
-    setInterval(nextSlide, slideInterval);
-
-</script>
+  </body>
+</html>
